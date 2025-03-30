@@ -48,18 +48,21 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
+	max-width: 1440px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
 header {
+	width: 1140px;
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px auto;
+	
+	
 }
 section {
-	margin: 50px 0
+	margin: 150px ;
 }
 
 h1{
@@ -90,9 +93,15 @@ nav ul {
 	list-style-type: none;
 
 }
+
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+}
+
+nav a {
+    color:#000000; 
+    text-decoration: none; 
 }
 
 li:hover {
@@ -101,6 +110,7 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+	margin: auto 150px;
 }
 #introduction figure {
 	flex: 1
@@ -137,47 +147,98 @@ li:hover {
 	width: 100%;
 
 }
-#contact {
+#contact,#login {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
-#contact > * {
+#contact > *,#login > * {
 	text-align: center;
 
 }
-#contact h2{
+#contact h2,#login h2{
 	margin-bottom: 20px;
 }
-#contact form {
+#contact form,#login form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+#contact input,#login input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+#contact label,#login label {
 	margin: 2em 0 1em 0;
 }
-#contact textarea {
+#contact textarea,#login textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 input[type="submit"]{
+	width: 237px;
+	height: 36px;
 	font-family: 'Syne';
 	font-weight: 700;
-	color: white;
+	color:#FFFFFF ;
 	background-color: #1D6154;
 	margin : 2em auto ;
-	width: 180px;
+	text-align: center;
+	border: none;
+	border-radius: 60px;
+	cursor: pointer;
+}
+
+input[type="text"]{
+	height: 51px;
+	font-family: 'work sans';
+	font-weight: 400;
+	background-color: #FFFFFF;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+input[type="submit"].enabled {
+    background-color: #28a745; /* Vert pour le bouton Valider */
+}
+
+#workCategory{
+	width: 420px;
+	height: 51px;
+	font-family: 'work sans';
+	font-weight: 400;
+	background-color: #FFFFFF;
+	margin : 2em auto ;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.filters{
+	display: flex;
+	justify-content: center;
+	gap: 1rem ;
+	margin-bottom: 1rem;
+	
+	
+}
+
+.filters button{
+	font-family: 'Syne';
+	font-weight: 700;
+	padding: 0.5rem 1rem;
 	text-align: center;
 	border-radius: 60px ;
+	color: #1D6154;
+	
+	height: 37px;
+}
+
+.filters button:hover {
+	background-color: #1D6154; /* Changer la couleur de fond au survol */
+  	color: white; /* Texte en vert foncé lorsque cliqué */
 }
 
 footer nav ul {
@@ -186,3 +247,243 @@ footer nav ul {
 	margin: 2em
 }
 
+.hidden {
+    display: none;
+}
+
+#error-message {
+    color: red;
+    font-size: 1.1em;
+    margin-top: 15px;
+}
+
+.forgot-password-btn {
+    background: none;
+    border: none;
+    color: #070707;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Modale */
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+	display: grid;
+    background-color: #fff;
+    padding: 20px;
+    width: 630px;  /* Largeur de la modale ajustée à 630px */
+    height: 670px; /* Hauteur de la modale ajustée à 688px */
+    position: relative;
+    overflow: hidden; /* Pour éviter les débordements d'éléments */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	border-radius: 10px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.gallery-modal {
+    display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	
+   
+    
+}
+
+.modal-content h2 {
+    color:#000000;
+    text-align: center;  /* Centrer le texte */
+    margin-bottom: 20px;  /* Espacement en bas du titre */
+	font-family: 'work sans';
+	font-weight: 400;
+}
+
+.gallery-modal img {
+    width: 79px;  /* Largeur fixe des images */
+    height: 118px; /* Hauteur fixe des images */
+    border-radius: 8px;
+    object-fit: cover; /* Ajuste les images sans les déformer */
+}
+
+.add-work-btn {
+    display: flex;
+	justify-content: center;
+    margin-top: 20px;
+    background-color: #1D6154;
+    color: white;
+	font-family: 'syne';
+    padding: 10px 20px;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+}
+
+
+.hidden{
+	display: none;
+}
+
+.button-modifier{
+	display: flex;
+	background: none;
+	border: none;
+	gap: 10px;
+	font-family: 'work sans';
+	cursor: pointer;
+}
+
+
+.fa-regular{
+	background: none;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: none;
+	
+}
+
+/* Style pour le conteneur de l'image (avec l'icône à l'intérieur) */
+.img-container {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+}
+
+/* Style pour l'image */
+.img-container img {
+    width: 79px;  /* Largeur de l'image */
+    height: 118px; /* Hauteur de l'image */
+    display: block;
+    border-radius: 5px; /* Optionnel : Arrondir les coins de l'image */
+}
+
+/* Style pour l'icône de suppression (à l'intérieur de l'image) */
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: black;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    
+}
+
+.modal-content{
+	display:none ;
+}
+
+.fa-port-folio{
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	gap: 10px;
+	
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-photo-btn {
+	display: flex;
+	flex-direction: column;
+    background-color: #E8F1F6;
+    color: #B9C5CC;
+    padding: 12px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-items: center;
+    gap: 8px; /* Espacement entre l'icône et le texte */
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+.add-photo-btn i {
+    font-size: 75px;
+}
+
+.add-photo-btn span:last-child {
+    font-size: 12px;
+    color: #999;                  /* Couleur du texte d'information */
+    margin-top: 5px;
+    display: block;                /* Pour que le texte apparaisse sous le bouton */
+}
+
+.back-btn {
+    position: absolute;  
+    top: 20px;           
+    left: 20px;          
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;         
+    cursor: pointer;
+    z-index: 1000;       
+}
+
+.back-btn i {
+    margin-right: 10px;
+}
+
+/* Styles pour l'aperçu de l'image */
+
+
+#photo-preview {
+    max-width: 100%;
+    max-height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Cacher le texte et l'icône après la sélection de l'image */
+.add-photo-btn.image-selected i,
+.add-photo-btn.image-selected span {
+    display: none;
+}
+
+/* Style pour le mode édition */
+#mode-edition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    top: 0;
+    width: 100%;
+	height: 59PX;
+	
+   
+}
+
+hr {
+	width: 420px;
+    border: 1px;
+    border-top: 2px solid #B3B3B3; /* Bordure grise claire */
+    margin: 20px 0; /* Espacement avant et après la ligne */
+}

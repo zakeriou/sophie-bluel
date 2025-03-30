@@ -9,20 +9,31 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+<!-- Mode édition - visible après la connexion -->
+<div id="mode-edition" class="mode-edition hidden">
+    <i class="fa-regular fa-pen-to-square"></i> <span>Mode édition</span>
+</div>
 <body>
+	
 <header>
+	
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
+			<li> <a href="index.html">projets</a></li>
+			<li> <a href="#contact">contact</a></li>
+			<li> <a class = "login " href="login.html">login</a></li>
+			<li> <a class = "logout hidden" href="login.html">logout</a></li>
+			
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </header>
 <main>
+	
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
@@ -35,54 +46,73 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="fa-port-folio"> 
+			<h2 id="portfolio-title">Mes Projets </h2>
+
+			<button class="button-modifier"><i class="fa-regular fa-pen-to-square "></i> modifier </button>
+		</div>
+		<div class="filters">
+		</div>
 		<div class="gallery">
-			<figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-				<figcaption>Appartement Paris V</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-				<figcaption>Restaurant Sushisen - Londres</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-				<figcaption>Structures Thermopolis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-				<figcaption>Appartement Paris X</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-				<figcaption>Appartement Paris XVIII</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-				<figcaption>Bar “Lullaby” - Paris</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure>
+		
 		</div>
 	</section>
+			<!-- Modale pour ajouter des images -->
+					<div class="modal-container">
+						<div class="overlay"></div>
+						<div id="modal-works" class="modal-content">
+							<button class="close-modal">x</button>
+							<h2>Galerie photo</h2>
+							<div class="gallery-modal">
+								<!-- Les images de la galerie seront ajoutées ici -->
+							</div>
+							<hr>
+							<button class="add-work-btn">Ajouter une photo</button>
+						</div>
+
+						<div class ="modal-content" id="modal-form">
+							<button class="back-btn"><i class="fas fa-arrow-left"></i></button>  
+							<button class="close-modal">x</button>
+							<h2>Ajout photo</h2>
+							<form id="addWorkForm" class="add-work-form">
+								
+								<div class="form-row">
+									
+								<label class="add-photo-btn" for="photo-input" >
+									
+									<input id="photo-input" name="image" type="file" class="hidden"  >	
+								    </input>
+									
+									<i class="fas fa-image"></i> 
+										<!-- Aperçu de la photo choisie -->
+										<div id="photo-preview-container" class="hidden">
+											<img id="photo-preview" src="" alt="Aperçu de la photo" />
+										</div>
+										<span>+ Ajouter photo </span>
+										<span>(jpg, png : 4 Mo max)</span>
+								</label>
+
+									 
+										<label for="workTitle">Titre</label>
+										<input type="text" id="workTitle" name="title" required>
+									
+										<label for="workCategory">Catégorie</label>
+										<select id="workCategory" name="category" required>
+											<!-- Les options seront ajoutées dynamiquement depuis l'API -->
+										</select>
+									
+										<hr>
+									
+										<input type="submit" value="Valider">
+								</div>		
+
+							</form>
+						</div>
+					</div>
+
+					
+
+
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -96,6 +126,11 @@
 			<input type="submit" value="Envoyer">
 		</form>
 	</section>
+							
+
+
+
+
 </main>
 
 <footer>
@@ -105,5 +140,6 @@
 		</ul>
 	</nav>
 </footer>
+<script src = "scribt.js"></script>
 </body>
 </html>
